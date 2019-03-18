@@ -10,7 +10,8 @@ class App extends Component {
   state = {
     bars: [],
     buttons:[],
-    limit: 0
+    limit: 0,
+    activeBar: 0
   }
 
   componentDidMount = () => {
@@ -23,14 +24,25 @@ class App extends Component {
     })
   }
 
+  updateActiveBar = activeBar => {
+    this.setState({ ...this.state, activeBar})
+  }
+
+  updateBar = value => {
+    const newBars = [...this.state.bars];
+    if(newBars[this.state.activeBar] + Math.round(value / this.state.limit * 100) >  0) 
+      newBars[this.state.activeBar] += Math.round(value / this.state.limit * 100);
+    this.setState({ ...this.state, bars: newBars })
+  }
+
   render() {
     return (
       <div className="App container">
         <h2>Progress Demo Bar</h2>
         <ProgressBar bars={this.state.bars}/>
         <div className="controls">
-          <Dropdown />
-          <Button buttons={this.state.buttons}/>
+          <Dropdown updateActiveBar={this.updateActiveBar}/>
+          <Button updateBar={this.updateBar} buttons={this.state.buttons}/>
         </div>
       </div>
     );

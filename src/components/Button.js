@@ -1,12 +1,20 @@
 import React from 'react';
 
-const Button = props => {
-  return props.buttons.map((button,index) => {
-    return (
-      <button type="button" key={index} className="btn btn-primary" value={button}>
-        {button}
-      </button>
-    );
-  });
-};
+class Button extends React.Component {
+
+  handleClick = event => {
+    this.props.updateBar(parseInt(event.target.value));
+  }
+
+  render() {
+
+    return this.props.buttons.map((button,index) => {
+      return (
+        <button onClick={this.handleClick} type="button" key={index} className="btn btn-primary" value={button}>
+          {button}
+        </button>
+      );
+    });
+  }
+}
 export default Button;
