@@ -8,8 +8,10 @@ class Dropdown extends React.Component{
   }
 
   render(){
+    const count = this.props.bars;
     return(
       <select onChange={this.handleOnSelected} className="custom-select" id="inputGroupSelect01">
+
         <option defaultValue value="0">Progress 1</option>
         <option value="1">Progress 2</option>
         <option value="2">Progress 3</option>

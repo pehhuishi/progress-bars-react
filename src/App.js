@@ -41,7 +41,7 @@ class App extends Component {
         <h2>Progress Demo Bar</h2>
         <ProgressBar bars={this.state.bars}/>
         <div className="controls">
-          <Dropdown updateActiveBar={this.updateActiveBar}/>
+          <Dropdown bars={this.state.bars.length} updateActiveBar={this.updateActiveBar}/>
           <Button updateBar={this.updateBar} buttons={this.state.buttons}/>
         </div>
       </div>
